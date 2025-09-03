@@ -57,3 +57,7 @@ flagged/
 # OS files
 Thumbs.db
 .DS_Store
+
+# Supplementary info with sensitive data
+sup_info/
+*.rtf

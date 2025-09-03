@@ -1,5 +1,5 @@
 ---
-title: Food Description Mapping Tool - Gradio
+title: Food Database Mapper
 emoji: 🥗
 colorFrom: blue
 colorTo: green
@@ -7,7 +7,7 @@ sdk: gradio
 sdk_version: 4.44.1
 app_file: app.py
 pinned: false
-license: apache-2.0
+license: cc0-1.0
 models:
   - thenlper/gte-large
 tags:
@@ -19,9 +19,19 @@ tags:
   - python
 ---
 
-# Food Description Semantic Mapping Tool (Gradio)
+# Food Database Mapper
 
 A sophisticated web application for mapping food descriptions to reference databases using multiple matching algorithms including semantic embeddings, fuzzy matching, and TF-IDF similarity.
+
+## Repository & Hosting
+
+- **Source Code**: [GitHub Repository](https://github.com/RichardStoker-USDA/Food-Database-Mapper) - Primary location for code and documentation
+- **Live Application**: [HuggingFace Spaces](https://huggingface.co/spaces/richtext/Food-Database-Mapper) - Hosted with ZeroGPU for free GPU-accelerated processing
+- **Deployment**: Automatic CI/CD from GitHub to HuggingFace Spaces via GitHub Actions
+
+### Why HuggingFace Spaces?
+
+We host the application on HuggingFace Spaces to leverage their **ZeroGPU** infrastructure, which provides free GPU compute for processing large food databases with semantic embeddings. This enables researchers to use GPU acceleration without requiring their own hardware.
 
 ## Overview
 
@@ -66,14 +76,10 @@ This tool helps researchers and nutritionists match food descriptions from vario
 
 ### Performance
 - Processes 1,000 items in under 60 seconds
-- Handles datasets up to 10,000 items
-- Memory efficient batch processing
-- Optimized for CPU (no GPU required)
-
-### Accuracy Metrics
-- Semantic embeddings: 73% accuracy on NHANES dataset
-- Fuzzy matching: 65% accuracy for exact variations
-- TF-IDF: 68% accuracy for keyword matches
+- Maximum dataset size: 50,000 items per file (demo limit)
+- Batch processing for datasets over 30,000 items
+- GPU-accelerated embeddings for faster processing
+- Shared demo has 2-minute GPU time limit
 
 ## How to Use
 
@@ -142,8 +148,8 @@ pip >= 23.0
 
 ```bash
 # Clone repository  
-git clone https://huggingface.co/spaces/richtext/Food-Description-Mapping-Tool-Gradio
-cd Food-Description-Mapping-Tool-Gradio
+git clone https://github.com/RichardStoker-USDA/Food-Database-Mapper.git
+cd Food-Database-Mapper
 
 # Install dependencies
 pip install -r requirements.txt
@@ -162,36 +168,47 @@ docker build -t food-mapping-gradio .
 docker run -p 7860:7860 food-mapping-gradio
 ```
 
+## Important Limitations (Demo Version)
+
+### Dataset Size Limits
+- **Maximum 50,000 items per file** for the shared demo
+- This limit ensures fair GPU usage across all users
+- For larger datasets, please run locally with your own GPU
+
+### GPU Resources
+- Shared demo has a 2-minute GPU processing limit
+- Daily GPU consumption caps apply
+- Automatic batching for datasets over 30,000 items
+
+### Local Installation for Large Datasets
+For processing more than 50,000 items, install locally:
+```bash
+git clone https://github.com/RichardStoker-USDA/Food-Database-Mapper.git
+cd Food-Database-Mapper
+pip install -r requirements.txt
+python app.py
+```
+
 ## Data Privacy
 
-- All processing happens locally in your browser session
+- All processing happens in your session
 - No data is stored permanently on servers
 - Files are deleted after session ends
 - No external API calls for data processing
 
-## Citation
-
-If you use this tool in your research, please cite:
-
-```bibtex
-@software{food_mapping_tool_gradio,
-  title = {Food Description Semantic Mapping Tool (Gradio)},
-  author = {Stoker, Richard},
-  organization = {USDA Agricultural Research Service},
-  year = {2025},
-  url = {https://huggingface.co/spaces/richtext/Food-Description-Mapping-Tool-Gradio}
-}
-```
 
 ## Support
 
 For questions or issues:
 - Email: richard.stoker@usda.gov
-- HuggingFace Space: [Report an issue](https://huggingface.co/spaces/richtext/Food-Description-Mapping-Tool-Gradio/discussions)
+- GitHub Issues: [Report an issue](https://github.com/RichardStoker-USDA/Food-Database-Mapper/issues)
+- HuggingFace Discussions: [Community discussions](https://huggingface.co/spaces/richtext/Food-Database-Mapper/discussions)
 
 ## License
 
-Apache License 2.0 - See LICENSE file for details
+CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication
+
+This work has been dedicated to the public domain under the Creative Commons CC0 1.0 Universal license. To the extent possible under law, USDA Agricultural Research Service has waived all copyright and related or neighboring rights to this work.
 
 ## Acknowledgments
 
