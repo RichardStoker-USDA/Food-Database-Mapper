@@ -13,6 +13,7 @@ from datetime import datetime
 from pathlib import Path
 import tempfile
 import os
+import spaces
 
 # Import matching functions
 from modules.matching_functions import run_fuzzy_match, run_tfidf_match, run_embed_match
@@ -281,8 +282,9 @@ def update_column_preview(df, column_name):
     
     return preview_text
 
+@spaces.GPU
 def run_matching_process(input_df, target_df, input_col, target_col, methods, threshold, clean_text, progress=gr.Progress()):
-    """Execute the matching process with all algorithms"""
+    """Execute the matching process with all algorithms - GPU accelerated for embeddings"""
     
     if input_df is None or target_df is None:
         return None, "❌ Please upload both input and target CSV files", ""
@@ -762,8 +764,4 @@ with gr.Blocks(css=custom_css, title="Food Description Semantic Mapping Tool - U
 
 # Launch the app
 if __name__ == "__main__":
-    app.launch(
-        server_name="0.0.0.0",
-        server_port=7860,
-        share=False
-    )
+    app.launch()

@@ -15,6 +15,13 @@ def get_embedding_model():
     if _cached_model is None:
         print("Loading GTE-large model for the first time...")
         _cached_model = SentenceTransformer("thenlper/gte-large")
+        # Check if CUDA is available and move to GPU
+        import torch
+        if torch.cuda.is_available():
+            print("CUDA detected - using GPU for embeddings")
+            _cached_model = _cached_model.cuda()
+        else:
+            print("CUDA not available - using CPU for embeddings")
     return _cached_model
 
 def clean_text_simple(text_list):
@@ -112,17 +119,29 @@ def run_embed_match(input_list, target_list):
     
     # Generate embeddings with normalization for cosine similarity
     # The model understands context better with original capitalization and punctuation
+    # Use larger batch sizes for GPU processing
+    import torch
+    batch_size = 64 if torch.cuda.is_available() else 32
+    
     print(f"Encoding {len(input_list_clean)} input descriptions...")
     input_vecs = model.encode(input_list_clean, 
                              normalize_embeddings=True, 
                              show_progress_bar=False,
-                             batch_size=32)
+                             batch_size=batch_size,
+                             convert_to_tensor=True)
     
     print(f"Encoding {len(target_list_clean)} target descriptions...")
     target_vecs = model.encode(target_list_clean, 
                               normalize_embeddings=True, 
                               show_progress_bar=False,
-                              batch_size=32)
+                              batch_size=batch_size,
+                              convert_to_tensor=True)
+    
+    # Convert to numpy for cosine similarity calculation
+    if torch.is_tensor(input_vecs):
+        input_vecs = input_vecs.cpu().numpy()
+    if torch.is_tensor(target_vecs):
+        target_vecs = target_vecs.cpu().numpy()
     
     # Calculate cosine similarity matrix
     similarity_matrix = cosine_similarity(input_vecs, target_vecs)

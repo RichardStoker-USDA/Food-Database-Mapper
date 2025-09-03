@@ -1,5 +1,6 @@
 # Core Gradio framework
 gradio>=4.44.1
+spaces
 
 # Data processing
 pandas>=2.2.0
