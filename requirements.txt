@@ -1,5 +1,5 @@
 # Core Gradio framework
-gradio>=4.44.0
+gradio>=4.44.1
 
 # Data processing
 pandas>=2.2.0
