@@ -24,7 +24,8 @@ COPY --chown=user requirements.txt .
 
 # Install Python dependencies
 RUN pip install --user --no-cache-dir --upgrade pip && \
-    pip install --user --no-cache-dir -r requirements.txt
+    pip install --user --no-cache-dir -r requirements.txt && \
+    pip install --user --no-cache-dir --upgrade gradio>=4.44.1
 
 # Pre-download the sentence transformer model to speed up startup
 RUN python -c "from sentence_transformers import SentenceTransformer; model = SentenceTransformer('thenlper/gte-large'); print('Model downloaded successfully')"
