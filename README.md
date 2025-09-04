@@ -25,13 +25,9 @@ A sophisticated web application for mapping food descriptions to reference datab
 
 ## Repository & Hosting
 
-- **Source Code**: [GitHub Repository](https://github.com/RichardStoker-USDA/Food-Database-Mapper) - Primary location for code and documentation
-- **Live Application**: [HuggingFace Spaces](https://huggingface.co/spaces/richtext/Food-Database-Mapper) - Hosted with ZeroGPU for free GPU-accelerated processing
+- **Source Code**: <a href="https://github.com/RichardStoker-USDA/Food-Database-Mapper" target="_blank">GitHub Repository</a> - Primary location for code and documentation
+- **Live Application**: <a href="https://huggingface.co/spaces/richtext/Food-Database-Mapper" target="_blank">Food Database Mapper HuggingFace Spaces</a> - Hosted with ZeroGPU for GPU-accelerated processing
 - **Deployment**: Automatic CI/CD from GitHub to HuggingFace Spaces via GitHub Actions
-
-### Why HuggingFace Spaces?
-
-We host the application on HuggingFace Spaces to leverage their **ZeroGPU** infrastructure, which provides free GPU compute for processing large food databases with semantic embeddings. This enables researchers to use GPU acceleration without requiring their own hardware.
 
 ## Overview
 
