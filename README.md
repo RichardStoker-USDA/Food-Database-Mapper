@@ -146,21 +146,11 @@ docker run -p 7860:7860 food-mapping-gradio
 ### Dataset Size Limits
 - **Maximum 50,000 items per file** for the shared demo
 - This limit ensures fair GPU usage across all users
-- For larger datasets, please run locally with your own GPU
 
 ### GPU Resources
 - Shared demo has a 2-minute GPU processing limit
 - Daily GPU consumption caps apply
 - Automatic batching for datasets over 30,000 items
-
-### Local Installation for Large Datasets
-For processing more than 50,000 items, install locally:
-```bash
-git clone https://github.com/RichardStoker-USDA/Food-Database-Mapper.git
-cd Food-Database-Mapper
-pip install -r requirements.txt
-python app.py
-```
 
 ## Data Privacy
 
