@@ -26,7 +26,7 @@ A sophisticated web application for mapping food descriptions to reference datab
 ## Repository & Hosting
 
 - **Source Code**: <a href="https://github.com/RichardStoker-USDA/Food-Database-Mapper" target="_blank">GitHub Repository</a> - Primary location for code and documentation
-- **Live Application**: <a href="https://huggingface.co/spaces/richtext/Food-Database-Mapper" target="_blank">Food Database Mapper HuggingFace Spaces</a> - Hosted with ZeroGPU for GPU-accelerated processing
+- **Live Application**: <a href="https://huggingface.co/spaces/richtext/Food-Database-Mapper" target="_blank">Food Database Mapper, hosted via HuggingFace Spaces</a> - With ZeroGPU for GPU-accelerated processing
 - **Deployment**: Automatic CI/CD from GitHub to HuggingFace Spaces via GitHub Actions
 
 ## Overview
@@ -38,26 +38,6 @@ This tool helps researchers and nutritionists match food descriptions from vario
 - Nutritional database harmonization
 - Menu item standardization
 - Research data cleaning
-
-## Features
-
-### Three Matching Algorithms
-
-1. **Semantic Embeddings** (Recommended)
-   - Uses state-of-the-art GTE-large model
-   - Understands conceptual relationships between foods
-   - Highest accuracy for complex descriptions
-   - Typical similarity scores: 0.77-0.94
-
-2. **Fuzzy String Matching**
-   - Character-level similarity using Levenshtein distance
-   - Good for typos and minor variations
-   - Fast processing speed
-
-3. **TF-IDF Similarity**
-   - Term frequency-inverse document frequency
-   - Effective for keyword-based matching
-   - Balanced speed and accuracy
 
 ### User-Friendly Interface
 
@@ -71,11 +51,9 @@ This tool helps researchers and nutritionists match food descriptions from vario
 ## Technical Specifications
 
 ### Performance
-- Processes 1,000 items in under 60 seconds
 - Maximum dataset size: 50,000 items per file (demo limit)
 - Batch processing for datasets over 30,000 items
 - GPU-accelerated embeddings for faster processing
-- Shared demo has 2-minute GPU time limit
 
 ## How to Use
 
@@ -90,9 +68,8 @@ This tool helps researchers and nutritionists match food descriptions from vario
    - Preview data to verify selection
 
 3. **Configure Matching**
-   - Select matching algorithm(s)
+   - Select matching algorithm
    - Adjust similarity threshold (0.85 recommended)
-   - Enable text cleaning if needed
 
 4. **Review Results**
    - View matches with similarity scores
@@ -125,7 +102,7 @@ A003,"Milk, whole, 3.25% milkfat"
 - **0.88-0.92**: Very good match - Same food, different form
 - **0.85-0.88**: Good match - Related foods
 - **0.82-0.85**: Moderate match - Same category
-- **Below 0.82**: Weak match - Consider as NO MATCH
+- **Below 0.82**: Weak match - Consider as NO MATCH (if using default similarity threshold)
 
 ### NO MATCH Items
 
