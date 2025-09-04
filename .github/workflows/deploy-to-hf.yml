@@ -20,17 +20,13 @@ jobs:
        env:
          HF_TOKEN: ${{ secrets.HF_TOKEN }}
        run: |
-         # Install Git LFS
          git lfs install
 
-         # Configure git
+         git config --global user.email "${{ secrets.HF_EMAIL }}"
          git config --global user.email "richard.stoker@usda.gov"
          git config --global user.name "richtext"
-         git config --global commit.gpgsign false
          
 
-         # Add HuggingFace remote
          git remote add huggingface https://huggingface.co/spaces/richtext/Food-Database-Mapper
 
-         # Push to HuggingFace using the token
          git push https://HF_USERNAME:$HF_TOKEN@huggingface.co/spaces/richtext/Food-Database-Mapper main --force
