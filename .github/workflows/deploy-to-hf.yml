@@ -25,7 +25,9 @@ jobs:
 
          # Configure git
          git config --global user.email "richard.stoker@usda.gov"
-         git config --global user.name "GitHub Actions Bot"
+         git config --global user.name "richtext"
+         git config --global commit.gpgsign false
+         
 
          # Add HuggingFace remote
          git remote add huggingface https://huggingface.co/spaces/richtext/Food-Database-Mapper
